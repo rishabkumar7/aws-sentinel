@@ -1,7 +1,36 @@
 
 # AWS Sentinel
 
+[![PyPI version](https://img.shields.io/pypi/v/aws-sentinel.svg)](https://pypi.org/project/aws-sentinel/)
+[![GitHub stars](https://img.shields.io/github/stars/rishabkumar7/aws-sentinel.svg)](https://github.com/rishabkumar7/aws-sentinel/stargazers)
+[![Downloads](https://static.pepy.tech/badge/aws-sentinel)](https://pepy.tech/project/aws-sentinel)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
 AWS Sentinel is a powerful command-line security scanner for AWS resources. It helps identify common security issues and misconfigurations in your AWS environment.
+
+```bash
+ █████╗ ██╗    ██╗███████╗    ███████╗███████╗███╗   ██╗████████╗██╗███╗   ██╗███████╗██╗     
+██╔══██╗██║    ██║██╔════╝    ██╔════╝██╔════╝████╗  ██║╚══██╔══╝██║████╗  ██║██╔════╝██║     
+███████║██║ █╗ ██║███████╗    ███████╗█████╗  ██╔██╗ ██║   ██║   ██║██╔██╗ ██║█████╗  ██║     
+██╔══██║██║███╗██║╚════██║    ╚════██║██╔══╝  ██║╚██╗██║   ██║   ██║██║╚██╗██║██╔══╝  ██║     
+██║  ██║╚███╔███╔╝███████║    ███████║███████╗██║ ╚████║   ██║   ██║██║ ╚████║███████╗███████╗
+╚═╝  ╚═╝ ╚══╝╚══╝ ╚══════╝    ╚══════╝╚══════╝╚═╝  ╚═══╝   ╚═╝   ╚═╝╚═╝  ╚═══╝╚══════╝╚══════╝
+                                                                        
+                      AWS Security Sentinel
+
+Scanning AWS account using profile: default in region: us-east-1
+Initializing security checks...
++-------------------------+
+| AWS Security Issues Detected |
++--------+---------------+------------------------------------------+
+| Service| Resource      | Issue                                    |
++--------+---------------+------------------------------------------+
+| S3     | mybucket      | Public bucket                            |
+| EC2    | sg-12345abcde | Security group with port 22 open to public |
+| EBS    | vol-67890fghij| Unencrypted volume                       |
+| IAM    | alice         | User without MFA                         |
++--------+---------------+------------------------------------------+
+```
 
 ## Features
 
@@ -21,6 +50,7 @@ pip install aws-sentinel
 ```
 
 Or using uv
+
 ```bash
 uv pip install aws-sentinel
 ```
