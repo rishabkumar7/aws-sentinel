@@ -3,3 +3,4 @@ boto3
 prettytable
 moto
 pytest
+boto3>=1.34.0

@@ -23,7 +23,7 @@ setup(
     ],
     python_requires=">=3.9",
     install_requires=[
-        "boto3>=1.20.0",
+        "boto3>=1.34.0",
         "click>=8.0.0",
         "prettytable>=2.0.0",
         "colorama>=0.4.4",

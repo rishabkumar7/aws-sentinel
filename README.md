@@ -6,7 +6,7 @@
 [![Downloads](https://static.pepy.tech/badge/aws-sentinel)](https://pepy.tech/project/aws-sentinel)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-AWS Sentinel is a powerful command-line security scanner for AWS resources. It helps identify common security issues and misconfigurations in your AWS environment.
+AWS Sentinel is a powerful command-line security scanner for AWS resources. It helps identify common security issues and misconfigurations in your AWS environment. Now featuring **natural language queries** powered by Amazon Bedrock!
 
 ```bash
  █████╗ ██╗    ██╗███████╗    ███████╗███████╗███╗   ██╗████████╗██╗███╗   ██╗███████╗██╗     
@@ -41,6 +41,16 @@ AWS Sentinel currently checks for the following security issues:
 - **EBS Volumes**: Detects unencrypted volumes
 - **IAM Users**: Identifies users without Multi-Factor Authentication (MFA)
 
+### 🆕 Natural Language Queries (Powered by Amazon Bedrock)
+
+Ask security questions in plain English! AWS Sentinel now supports natural language queries using Amazon Bedrock's Nova Lite model.
+
+**Examples:**
+- "Are there any public S3 buckets?"
+- "Check for high priority security issues"
+- "Find IAM users without MFA"
+- "Show me unencrypted storage volumes"
+
 ## Installation
 
 You can install AWS Sentinel using pip:
@@ -57,7 +67,36 @@ uv pip install aws-sentinel
 
 ## Usage
 
-### Basic Usage
+### Natural Language Queries 🆕
+
+Ask security questions in plain English using Amazon Bedrock:
+
+```bash
+aws-sentinel ask "Are there any public S3 buckets?"
+```
+
+```bash
+aws-sentinel ask "Check for high priority security issues"
+```
+
+```bash
+aws-sentinel ask "Find IAM users without MFA"
+```
+
+**Natural Language Options:**
+```
+Usage: aws-sentinel ask [OPTIONS] QUERY
+
+Options:
+  --profile TEXT               AWS profile to use for authentication
+  --region TEXT                AWS region to scan for security issues
+  --bedrock-region TEXT        AWS region for Amazon Bedrock service
+  --output [table|json|csv]    Output format for scan results
+  -v, --verbose                Enable verbose output
+  -h, --help                   Show this message and exit.
+```
+
+### Traditional Scanning
 
 Run a full security scan using your default AWS profile:
 
@@ -87,6 +126,24 @@ Options:
 ```
 
 ### Examples
+
+**Natural Language Queries:**
+
+```bash
+# Ask about specific services
+aws-sentinel ask "Are there any public S3 buckets in my account?"
+
+# Check for critical issues
+aws-sentinel ask "What are the most critical security problems?"
+
+# Filter by service type
+aws-sentinel ask "Check IAM users for security issues"
+
+# Export natural language results
+aws-sentinel ask "Find all security issues" --output json > nl_security_report.json
+```
+
+**Traditional Scanning:**
 
 Run a scan with a specific AWS profile and region:
 
@@ -191,6 +248,31 @@ Initializing security checks...
 - Python 3.9+
 - AWS credentials configured (via AWS CLI or environment variables)
 - Required permissions to access AWS resources
+- **For natural language queries**: Access to Amazon Bedrock with Nova Lite model
+
+### Amazon Bedrock Setup
+
+To use natural language queries, ensure you have:
+
+1. **Access to Amazon Bedrock** in your AWS account
+2. **Model access** to `amazon.nova-lite-v1:0`
+3. **Appropriate IAM permissions** for Bedrock:
+   ```json
+   {
+     "Version": "2012-10-17",
+     "Statement": [
+       {
+         "Effect": "Allow",
+         "Action": [
+           "bedrock:InvokeModel"
+         ],
+         "Resource": "arn:aws:bedrock:*::foundation-model/amazon.nova-lite-v1:0"
+       }
+     ]
+   }
+   ```
+
+**Note**: If Bedrock is unavailable, the tool automatically falls back to keyword-based parsing.
 
 ## Development
 
