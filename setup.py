@@ -8,7 +8,7 @@ with open("README.md", "r", encoding="utf-8") as fh:
 
 setup(
     name="aws-sentinel",
-    version="0.1.1",
+    version="0.1.2",
     author="Rishab Kumar",
     author_email="rishabkumar7@gmail.com",
     description="A security scanner for AWS resources",
