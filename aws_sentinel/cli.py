@@ -28,23 +28,25 @@ CONTEXT_SETTINGS = dict(help_option_names=['-h', '--help'])
 def main():
     """
     \b
-    ╔═══════════════════════════════════════════════╗
-    ║               AWS SENTINEL                    ║
-    ║        Security Scanner for AWS Resources     ║
-    ╚═══════════════════════════════════════════════╝
+     █████╗ ██╗    ██╗███████╗    ███████╗███████╗███╗   ██╗████████╗██╗███╗   ██╗███████╗██╗     
+    ██╔══██╗██║    ██║██╔════╝    ██╔════╝██╔════╝████╗  ██║╚══██╔══╝██║████╗  ██║██╔════╝██║     
+    ███████║██║ █╗ ██║███████╗    ███████╗█████╗  ██╔██╗ ██║   ██║   ██║██╔██╗ ██║█████╗  ██║     
+    ██╔══██║██║███╗██║╚════██║    ╚════██║██╔══╝  ██║╚██╗██║   ██║   ██║██║╚██╗██║██╔══╝  ██║     
+    ██║  ██║╚███╔███╔╝███████║    ███████║███████╗██║ ╚████║   ██║   ██║██║ ╚████║███████╗███████╗
+    ╚═╝  ╚═╝ ╚══╝╚══╝ ╚══════╝    ╚══════╝╚══════╝╚═╝  ╚═══╝   ╚═╝   ╚═╝╚═╝  ╚═══╝╚══════╝╚══════╝
     
-    AWS Sentinel scans your AWS account for security vulnerabilities 
-    and misconfigurations, helping you maintain a secure cloud environment.
+                        AWS Security Sentinel
+    
+    Scans your AWS account for security vulnerabilities and misconfigurations.
     
     Commands:
-      scan            Run a security scan on your AWS resources
-      ask             Ask a natural language security question (powered by Amazon Bedrock)
-      version         Show the version and exit
+      scan    Run a security scan on your AWS resources
+      ask     Ask a natural language security question (powered by Amazon Bedrock)
       
     Examples:
       aws-sentinel scan --profile production --region us-west-2
       aws-sentinel scan --checks s3,ec2 --output json
-      aws-sentinel ask "Are there any public S3 buckets in my account?"
+      aws-sentinel ask "Are there any public S3 buckets?"
       aws-sentinel ask "Check for high priority security issues"
     """
     pass
